@@ -11,6 +11,11 @@ heroku create enderdagdelen-havadurumu1 yazdım.
 
 2 adet url verecektir. İlk url heroku da oluşturulmuş olan, gerçek ve tıklanabilir, projemize ait sitenin uzantısı, ikinici ise dosyalarımızı yüklememiz gereken github repository'dir.
 
+3-git remote dersek eğer 2 adet dosya görünecektir. origin ve heroku.
+heroku, herokunun bizim için oluşturduğu dosyadır. 
+Şimdi ise basit bir şekilde git push heroku master yazıyoruz ve enter'e basıyoruz.
+
+enter'e basar basmaz bir terslik olmaması sonucunda 10-15 sn içinde herokuya dosyalar atanmış olacaktır.
 ************************************************************************************ 
 
 YUKLEMEDEN YAPILMASI GEREKEN DEĞİŞİKLİKLER

@@ -7,7 +7,11 @@ const submit = document.getElementById('tus');
 submit.addEventListener('click',(e)=>{
     const yer = document.getElementById('yer').value;
     
-    const url = 'http://localhost:3000/weather?address='+yer;
+    // normal kod
+    //const url = 'http://localhost:3000/weather?address='+yer;
+
+    //heroku için yapılandırılan kod
+    const url = '/weather?address='+yer;
 
     fetch(url).then((response)=>{
         response.json().then((data)=>{
