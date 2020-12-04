@@ -10,6 +10,11 @@ const hava = require('../src/fonksiyonlar/hava.js');
 
 const havaApp = express();
 
+// Heroku için port belirliyouz. Bu kodu sadece eğer çalıştığımız dosyayı herokuya yüklersek yapıyoruz.
+const port = process.env.PORT || 3000; //yani varsa ilki yoksa 3000 kullan
+
+//                                                           -------Heroku son------
+
 //Static Dosyalar için yazılan kodlar                        -------Statik Başlangıç-------
 const staticFiles=path.join(__dirname,'../public');
 havaApp.use(express.static(staticFiles));
@@ -79,6 +84,6 @@ havaApp.get('/weather',(req,res)=>{
 //Dinamik Sayfalar                  ------DİNAMİK-----
 
 
-havaApp.listen(3000,()=>{
-    console.log("Hava Server 3000'de Yayında");
+havaApp.listen(port,()=>{ 
+    console.log("Server is up on "+port);
 });

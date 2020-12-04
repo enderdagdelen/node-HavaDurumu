@@ -1,0 +1,52 @@
+HEROKU DA APP OLUŞTURMA
+1-Oluşturmuş Olduğumuz ssh public key'in herokuya tanıtılmsıdır. github'da anahtarı github'a kopyala yapıştır yapmıştık. Burada ise işlem daha kolay. sadece 
+
+heroku keys:add yazmak ve çıkan soruya yes demek.
+
+2- heroku dosyası oluşturmak.
+Not:Dosya ismi tamemen tek benzersiz olmaldıır. bir domain adı olacak çünkü.
+
+çalıştığımız dosyanın köküne; heroku create  dosyaadı yazıyoruz. Ben burada;
+heroku create enderdagdelen-havadurumu1 yazdım.
+
+2 adet url verecektir. İlk url heroku da oluşturulmuş olan, gerçek ve tıklanabilir, projemize ait sitenin uzantısı, ikinici ise dosyalarımızı yüklememiz gereken github repository'dir.
+
+************************************************************************************ 
+
+YUKLEMEDEN YAPILMASI GEREKEN DEĞİŞİKLİKLER
+1-package.json dosyası içindeki script nesnesinin değiştirilmesi.Burada script içinde aslında server olarak hangi dosyanın kullanılması gerektiğini girmemiz lazım.
+Değişim aşağıdaki gibi olacaktır.
+
+ilk hali
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+Son hali
+"scripts": {
+    "start": "node src/server.js"
+  },
+
+  ÖNEMLİ NOT: bu kodu değiştirdikten sonra biz de bundan terminal içerisinden faydalanabiliriz. Yapmamız gereken tek şey 
+  npm run start yazmak. Böylece start script'i çalışacaktır.
+
+2- localhost olarak ayarladığımız server'in çalışma yerini değiştirmemiz lazım. Çünkü artık localhost'tan çıkıyoruz. basitçe server.js dosyasının içine giriyoruz ve 
+
+express()'in hemen altında bir değişken tanımlıyoruz.
+
+const port = process.env.PORT || 3000;
+burada process.env.PORT heroku'nun kullanacağı porttur ve heroku bu kısmı kendi halleder. Eğer heroku yoksa yani buraya bir değer atamamışsa o zaman da tekrar localhost 3000 portunda çalışır. Burannı mantığı budur. 
+
+Son olarak da listen metodunu değiştiriyoruz.
+
+havaApp.listen(port,()=>{
+    console.log("Server is up on "+ port);
+});
+
+
+3- app.js dosyasında kullandığımız fetch içerisinde localhost yazmıştık, bunu da düzenlememiz gerekiyor. Burada da bütün url'nin önünü siliyoruz yani;
+
+const url = 'http://localhost:3000/weather?address='+yer; bu url'yani
+
+Bu şekle çeviriyoruz.
+const url = '/weather?address='+yer;

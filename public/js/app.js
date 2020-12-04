@@ -12,8 +12,6 @@ submit.addEventListener('click',(e)=>{
     fetch(url).then((response)=>{
         response.json().then((data)=>{
             console.log(data);
-            
-           
 
             if(data.error){
                 document.getElementById('sonuclar').innerHTML=data.error;
