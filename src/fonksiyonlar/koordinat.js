@@ -1,6 +1,6 @@
 const request = require('request');
 
-const api = 'pk.eyJ1IjoiZW5kZXJkYWdkZWxlbiIsImEiOiJja2g5OHJva3Iwb3cxMnBuenBheDRkcHV4In0.JOxvdDMc75z5VWesFC-I1A';
+const api = 'x';
 //const adress = 'Ankara';
 //url is limited for returning single solution
 
