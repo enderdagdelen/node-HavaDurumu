@@ -1,6 +1,6 @@
 const request = require('request');
 
-const apiKey = '0ba66232334933409a12a0c07b9ba414';
+const apiKey = 'x';
 const lat = 39.86667;//39.86667
 const long = 32.86667;//32.86667
 
